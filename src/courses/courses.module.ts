@@ -1,7 +1,8 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { CoursesController } from './courses.controller';
 import { CoursesService } from './courses.service';
-import { LoggerMiddleware } from 'middleware/logger.middleware';
+import { Logger } from 'src/common/middleware/logger.middleware';
+// import { Logger2 } from 'src/common/middleware/logger-functional';
 
 @Module({
   controllers: [CoursesController],
@@ -10,6 +11,6 @@ import { LoggerMiddleware } from 'middleware/logger.middleware';
 })
 export class CoursesModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('courses');
+    consumer.apply(Logger).forRoutes(CoursesController);
   }
 }

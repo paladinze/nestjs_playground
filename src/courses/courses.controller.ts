@@ -1,16 +1,17 @@
-import { Controller, Get, Req, Post, HttpCode, Redirect, Param, Body } from '@nestjs/common';
-import { Request } from 'express';
+import { Controller, Get, Post, HttpCode, Param, Body } from '@nestjs/common';
 import { CreateCourseDto } from './dto/create-course.dto';
 import { Course } from './interfaces/course.interface';
 import { CoursesService } from './courses.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('courses')
 @Controller('courses')
 export class CoursesController {
 
   constructor(private readonly coursesService: CoursesService){}
 
   @Get()
-  async findAll(@Req() request: Request): Promise<Course[]> {
+  async findAll(): Promise<Course[]> {
     return this.coursesService.findAll();
   }
 
