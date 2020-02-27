@@ -4,10 +4,11 @@ import { CourseService } from './course.service';
 import { Logger } from 'src/common/middleware/logger.middleware';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CourseEntity } from './course.entity';
+import { AuthModule } from 'src/auth/auth.module';
 // import { Logger2 } from 'src/common/middleware/logger-functional';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([CourseEntity])],
+  imports: [TypeOrmModule.forFeature([CourseEntity]), AuthModule],
   controllers: [CourseController],
   providers: [CourseService],
   exports: [CourseService, TypeOrmModule],
