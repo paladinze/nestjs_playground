@@ -1,16 +1,16 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { CourseEntity } from 'src/course/course.entity';
 
-@Entity()
+@Entity('user')
 export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  firstName: string;
+  username: string;
 
   @Column()
-  lastName: string;
+  password: string;
 
   @Column({ default: true })
   isActive: boolean;
